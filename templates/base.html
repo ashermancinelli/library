@@ -15,12 +15,13 @@
 
 <div class="container">
 
-    <div class="col-sm-3"></div>
+    <div class="col-sm-2"></div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>
+                    <th>OCLC#</th>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Item Type</th>
@@ -29,8 +30,10 @@
             </thead>
         
             <tbody>
+                <caption> Religion and Language </caption>
                 {% for l in religion_lines %}
                 <tr>
+                    <td> {{ l[0] }} </td>
                     <td>
                         <a href="https://www.worldcat.org/oclc/{{l[0]}}" > {{ l[1] }} </a>
                     </td>
@@ -39,9 +42,24 @@
                     <td> {{ l[6] }} </td>
                 </tr>
                 {% endfor %}
+            </tbody>
+        </table>
         
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>OCLC#</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Item Type</th>
+                    <th>Publisher</th>
+                </tr>
+            </thead>
+            <tbody>
+                <caption> Computer Science and Mathematics </caption>
                 {% for l in cs_lines %}
                 <tr>
+                    <td> {{ l[0] }} </td>
                     <td>
                         <a href="https://www.worldcat.org/oclc/{{l[0]}}" > {{ l[1] }} </a>
                     </td>
@@ -54,7 +72,7 @@
         </table>
     </div>
 
-    <div class="col-sm-3"></div>
+    <div class="col-sm-2"></div>
 </div>
 
 </body>

@@ -6,6 +6,16 @@ app = Flask(__name__)
 cs_lines = []
 religion_lines = []
 
+def lname_sorter(x):
+    x = x[2]
+    if ';' in x:
+        x = x.split(';')[0]
+
+    if ' ' in x:
+        x = x.split(' ')[-1]
+
+    return x
+
 @app.route('/')
 def hello():
     return render_template(
@@ -21,7 +31,7 @@ if __name__ == '__main__':
     with open('data/religion.csv', 'r') as f:
         csv_reader = csv.reader(f, delimiter=',')
         religion_lines = [*csv_reader,][1:]
-    cs_lines.sort(key=lambda x: x[2], reverse=False)
-    religion_lines.sort(key=lambda x: x[2], reverse=False)
+    cs_lines.sort(key=lname_sorter)
+    religion_lines.sort(key=lname_sorter)
     app.run()
 
