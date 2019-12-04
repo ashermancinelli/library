@@ -48,8 +48,10 @@ def name_sorter(x, y):
     Sort by last name, than first
     '''
 
-    x = x[2]
-    y = y[2]
+    x_title = x[1].lower().replace("the", "").strip()
+    y_title = y[1].lower().replace("the", "").strip()
+    x = x[2].lower()
+    y = y[2].lower()
 
     # Only grab first author
     if ';' in x:
@@ -86,7 +88,8 @@ def name_sorter(x, y):
     if y_fname is None or x_fname is None:
         return cmp(x_lname, y_lname)
     else:
-        return cmp(x_lname, y_lname) or cmp(x_fname, y_fname)
+        # cmp by last name, first name, than title
+        return cmp(x_lname, y_lname) or cmp(x_fname, y_fname) or cmp(x_title, y_title)
 
 @app.route('/')
 def hello():
